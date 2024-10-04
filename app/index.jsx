@@ -1,16 +1,20 @@
+import React from "react";
 import { Redirect } from "expo-router";
-import useToken from "../hooks/useToken";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { ActivityIndicator, View } from "react-native";
 
-export default function App() {
-  const { token } = useToken();
+const App = () => {
+  const { value: token, loading } = useLocalStorage("token");
 
-  return (
-    <>
-      {token && token ? (
-        <Redirect href="/home" />
-      ) : (
-        <Redirect href="/sign-in" />
-      )}
-    </>
-  );
-}
+  if (loading) {
+    return (
+      <View>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  return <Redirect href={token ? "/home" : "/information"} />;
+};
+
+export default App;

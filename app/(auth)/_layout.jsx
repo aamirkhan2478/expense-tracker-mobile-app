@@ -1,19 +1,30 @@
 import React from "react";
 import { Stack } from "expo-router";
-// import { Button, Theme, YStack } from "tamagui";
-// import { useColorScheme } from "react-native";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 const AuthLayout = () => {
-  // const colorScheme = useColorScheme();
-  // const [theme, setTheme] = useState(colorScheme || "light");
-
-  // const toggleTheme = () => {
-  //   setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  // };
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="sign-in" />
-      <Stack.Screen name="sign-up" />
+    <Stack>
+      <Stack.Screen
+        name="information"
+        options={{
+          headerTitle: () => null,
+          headerRight: () => <ThemeToggle />,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="sign-in"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="sign-up"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };

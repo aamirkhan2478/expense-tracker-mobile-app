@@ -26,8 +26,12 @@
       "package": "com.expense-tracker-app"
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-font", "expo-asset"]
+    "plugins": ["expo-font", "expo-asset"],
+    "experiments": {
+      "tsconfigPaths": true
+    }
   }
 }
